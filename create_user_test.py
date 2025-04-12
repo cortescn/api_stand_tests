@@ -46,7 +46,7 @@ def test_create_user_15_letter_in_first_name_get_success_response():
     positive_assert("Aaaaaaaaaaaaaaa")
 
 
-#Función de prueba negativa
+#Función de prueba negativa para los casos en los que se solicitud devuelve un error relacionado con caracteres.
 def negative_assert_symbol(first_name):
     user_body = get_user_body(first_name)
     response = sender_stand_request.post_new_user(user_body)
@@ -67,10 +67,10 @@ def test_create_user_1_letter_in_first_name_get_error_response():
 def test_create_user_16_letter_in_first_name_get_error_response():
     negative_assert_symbol("Аааааааааааааааа")
 
-#Prueba 5. Creación de una nueva usuaria o usuario
+#Prueba 5. Error
 #El parámetro "firstName" contiene palabras con espacios
 def test_create_user_has_space_in_first_name_get_error_response():
-    positive_assert("A Aaa")
+    negative_assert_symbol("A Aaa")
 
 #Prueba 6. Error
 # EL parámetro "firstName" contiene caracteres especiales
@@ -82,8 +82,7 @@ def test_create_user_has_special_symbol_in_first_name_get_error_response():
 def test_create_user_has_number_in_first_name_get_error_response():
     negative_assert_symbol("123")
 #
-# Función prueba negativa
-# La respuesta contiene el siguiente mensaje de error: "No se han enviado todos los parámetros requeridos"
+# Función de prueba negativa cuando el error es "No se enviaron todos los parámetros requeridos"
 def negative_assert_no_first_name(user_body):
   # Guarda el resultado de llamar a la función a la variable "response"
     response = sender_stand_request.post_new_user(user_body)
@@ -93,7 +92,7 @@ def negative_assert_no_first_name(user_body):
     # Comprueba si el atributo "code" en el cuerpo de respuesta es 400
     assert response.json()["code"] == 400
     # Comprueba si el atributo "message" en el cuerpo de respuesta se ve así:
-    assert response.json()["message"] == "No se enviaron todos los parámetros requeridos "
+    assert response.json()["message"] == "No se han aprobado todos los parámetros requeridos"
 
 # Prueba 8. Error
 # La solicitud no contiene el parámetro "firstName"
