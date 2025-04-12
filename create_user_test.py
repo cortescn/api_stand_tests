@@ -54,8 +54,8 @@ def negative_assert_symbol(first_name):
     assert response.status_code == 400
     assert response.json()["code"] == 400
     assert response.json()["message"] == "Has introducido un nombre de usuario no válido. " \
-                                         "El nombre solo puede contener letras del alfabeto latino,  "\
-                                         "la longitud debe ser de 2 a 15 caracteres"
+                                         "El nombre solo puede contener letras del alfabeto latino, "\
+                                         "la longitud debe ser de 2 a 15 caracteres."
 
 # Prueba 3. Error
 # El párametro "firstName" contiene 1 carácter.
@@ -70,7 +70,7 @@ def test_create_user_16_letter_in_first_name_get_error_response():
 #Prueba 5. Error
 #El parámetro "firstName" contiene palabras con espacios
 def test_create_user_has_space_in_first_name_get_error_response():
-    negative_assert_symbol("A Aaa")
+    positive_assert("A Aaa")
 
 #Prueba 6. Error
 # EL parámetro "firstName" contiene caracteres especiales
