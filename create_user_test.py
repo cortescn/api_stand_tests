@@ -67,7 +67,7 @@ def test_create_user_1_letter_in_first_name_get_error_response():
 def test_create_user_16_letter_in_first_name_get_error_response():
     negative_assert_symbol("Аааааааааааааааа")
 
-#Prueba 5. Error
+#Prueba 5. Creación de una nueva usuaria o usuario
 #El parámetro "firstName" contiene palabras con espacios
 def test_create_user_has_space_in_first_name_get_error_response():
     positive_assert("A Aaa")
